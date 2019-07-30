@@ -2,18 +2,29 @@ $(document).ready(function(){
     $("#get").click(function(){
         $.ajax({
             type:"GET",
-            url:"mydata.json",
+            url:"https://jsonplaceholder.typicode.com/users",
             success:function(data){
                
-               var output="<table class='table'><thead><tr><th>NAME</th><th>D.O.B</th><th>COLLEGE</th><th>MOBILE</th></tr></thead><t/able>"
-            for(var i in data){
-                output+="<tr> <td>"+ data[i].name+"</td>"
-                output+="<td>"+ data[i].dob+"</td>" 
-                output+="<td>"+ data[i].college+"</td>" 
-                output+="<td>"+ data[i].mob+"</td></tr>"
-            }
-                output+="</table>";
+                var output=""
+             
+         for(var i in data){
+             
+            output+="<div class='card'><div class='card-header'><div class='card-body'></div>"
+        
+                output+="<tr> <td>"+ data[i].id+"</td>"
+                output+="<td>"+ data[i].name+"</td>" 
+                output+="<td>"+ data[i].username+"</td>" 
+                output+="<td>"+ data[i].address.street+"</td>"
+                output+="<td>"+ data[i].address.suite+"</td>"
+                output+="<td>"+ data[i].address.city+"</td>"
+                output+="<td>"+ data[i].address.zipcode+"</td>"
+                output+="<td>"+ data[i].address.geo+"</td></tr>"
+             
+                output+="</div>";
                 $(".result").html(output);
+              
+            };
+               
                 
             }
         });
